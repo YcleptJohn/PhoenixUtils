@@ -16,7 +16,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class PhoenixUtils extends JavaPlugin implements Listener {
-	public ConcurrentHashMap<String, UUID> userIdMap;
+	public ConcurrentHashMap<String, UUID> userIdMap = null;
 	
 	public void onEnable() {
 		getServer().getPluginManager().registerEvents(this, this);
@@ -42,8 +42,8 @@ public class PhoenixUtils extends JavaPlugin implements Listener {
 			public void run() {
 				UUIDFetcher fetcher = new UUIDFetcher(Arrays.asList(username));
 				try {
-					if (userIdMap.isEmpty()) {
-						userIdMap = (ConcurrentHashMap<String, UUID>) fetcher.call();
+					if (userIdMap == null) {
+						userIdMap = fetcher.call();
 					} else {
 						userIdMap.putIfAbsent(username, fetcher.call().get(username));
 					}
