@@ -1,0 +1,9 @@
+name: PhoenixUtils
+main: uk.co.ycleptjohn.phoenixutils.PhoenixUtils
+version: 0.1
+author: YcleptJohn
+description: Phoenix Plugin Utilities
+commands:
+  getid:
+    description: Check CHM for a user's ID
+    usage: /getid <name>
